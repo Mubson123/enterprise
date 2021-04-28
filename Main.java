@@ -2,13 +2,13 @@ import java.util.*;
 
 public class Main {
 
-    public static void show(HashMap<Employee, List<TimeSystem>> hashEmployee){ // show the employees informations
+    public static void show(HashMap<Employee, List<TimeSheet>> hashEmployee){ // show the employees informations
         System.out.println("All employees with their personal informations");
 
         for (Employee employee : hashEmployee.keySet()) {
-            List<TimeSystem> timeSystems = hashEmployee.get(employee);
+            List<TimeSheet> timeSheets = hashEmployee.get(employee);
 
-            for (TimeSystem time : timeSystems){
+            for (TimeSheet time : timeSheets){
                 System.out.println(employee.getName() + ", " + employee.getSurname()
                         + "; " + employee.getAge() + " years old " +": " + time.getDay()
                         + " -> " + time.getHours() + " hours");
@@ -41,45 +41,45 @@ public class Main {
     public static void main(String[] args){
 
         Employee employee1 = new Employee("Goeth", "Joerg", "joerggeoth@hotmail.de", 28, 51210);
-        TimeSystem timeSystem1 = new TimeSystem(51210, "Mondays", 8.5);
-        TimeSystem timeSystem2 = new TimeSystem(51210, "Tuesday", 8.3);
-        TimeSystem timeSystem3 = new TimeSystem(51210, "Wednesday", 5.5);
-        TimeSystem timeSystem4 = new TimeSystem(51210, "Thursday", 8.5);
-        TimeSystem timeSystem5 = new TimeSystem(51210, "Friday", 3.9);
+        TimeSheet timeSheet1 = new TimeSheet(51210, "Mondays", 8.5);
+        TimeSheet timeSheet2 = new TimeSheet(51210, "Tuesday", 8.3);
+        TimeSheet timeSheet3 = new TimeSheet(51210, "Wednesday", 5.5);
+        TimeSheet timeSheet4 = new TimeSheet(51210, "Thursday", 8.5);
+        TimeSheet timeSheet5 = new TimeSheet(51210, "Friday", 3.9);
 
 
         Employee employee2 = new Employee("Heinrich", "Martha", "marthaheinrich@hotmail.de", 32, 51835);
-        TimeSystem timeSystem6 = new TimeSystem(51835, "Mondays", 8.0);
-        TimeSystem timeSystem7 = new TimeSystem(51835, "Tuesday", 7.5);
-        TimeSystem timeSystem8 = new TimeSystem(51835, "Wednesday", 5.5);
-        TimeSystem timeSystem9 = new TimeSystem(51835, "Thursday", 9.0);
-        TimeSystem timeSystem10 = new TimeSystem(51835, "Friday", 5.2);
+        TimeSheet timeSheet6 = new TimeSheet(51835, "Mondays", 8.0);
+        TimeSheet timeSheet7 = new TimeSheet(51835, "Tuesday", 7.5);
+        TimeSheet timeSheet8 = new TimeSheet(51835, "Wednesday", 5.5);
+        TimeSheet timeSheet9 = new TimeSheet(51835, "Thursday", 9.0);
+        TimeSheet timeSheet10 = new TimeSheet(51835, "Friday", 5.2);
 
 
         Employee employee3 = new Employee("Reinberg", "Harry", "harryreinberg@hotmail.de", 19, 28457);
-        TimeSystem timeSystemStudent1 = new TimeSystem(28457, "Tuesday", 8.0);
-        TimeSystem timeSystemStudent2 = new TimeSystem(28457, "Thursday", 8.0);
-        TimeSystem timeSystemStudent3 = new TimeSystem(28457, "Friday", 4.0);
+        TimeSheet timeSheetStudent1 = new TimeSheet(28457, "Tuesday", 8.0);
+        TimeSheet timeSheetStudent2 = new TimeSheet(28457, "Thursday", 8.0);
+        TimeSheet timeSheetStudent3 = new TimeSheet(28457, "Friday", 4.0);
 
         Employee employee4 = new Employee("Vongraber", "Jessica", "jessicavongraber@hotmail.de", 18, 28256);
-        TimeSystem timeSystemStudent4 = new TimeSystem(28256, "Monday", 6.0);
-        TimeSystem timeSystemStudent5 = new TimeSystem(28256, "Wednesday", 6.0);
-        TimeSystem timeSystemStudent6 = new TimeSystem(28256, "Thursday", 4.0);
-        TimeSystem timeSystemStudent7 = new TimeSystem(28256, "Thursday", 4.0);
+        TimeSheet timeSheetStudent4 = new TimeSheet(28256, "Monday", 6.0);
+        TimeSheet timeSheetStudent5 = new TimeSheet(28256, "Wednesday", 6.0);
+        TimeSheet timeSheetStudent6 = new TimeSheet(28256, "Thursday", 4.0);
+        TimeSheet timeSheetStudent7 = new TimeSheet(28256, "Thursday", 4.0);
 
-        HashMap<Employee, List<TimeSystem>> hashEmployee = new HashMap<>();
+        HashMap<Employee, List<TimeSheet>> hashEmployee = new HashMap<>();
 
-        List<TimeSystem> timeSystemOfEmployee1 = createTimesystems(timeSystem1, timeSystem2, timeSystem3, timeSystem4, timeSystem5);
-        hashEmployee.put(employee2, timeSystemOfEmployee1);
+        List<TimeSheet> timeSheetOfEmployee1 = createTimesystems(timeSheet1, timeSheet2, timeSheet3, timeSheet4, timeSheet5);
+        hashEmployee.put(employee2, timeSheetOfEmployee1);
 
-        List<TimeSystem> timeSystemOfEmployee2 = createTimesystems(timeSystem6, timeSystem7, timeSystem8, timeSystem9, timeSystem10);
-        hashEmployee.put(employee2, timeSystemOfEmployee2);
+        List<TimeSheet> timeSheetOfEmployee2 = createTimesystems(timeSheet6, timeSheet7, timeSheet8, timeSheet9, timeSheet10);
+        hashEmployee.put(employee2, timeSheetOfEmployee2);
 
-        List<TimeSystem> timeSystemOfEmployee3 = createTimesystems(timeSystemStudent1, timeSystemStudent2, timeSystemStudent3);
-        hashEmployee.put(employee3, timeSystemOfEmployee3);
+        List<TimeSheet> timeSheetOfEmployee3 = createTimesystems(timeSheetStudent1, timeSheetStudent2, timeSheetStudent3);
+        hashEmployee.put(employee3, timeSheetOfEmployee3);
 
-        List<TimeSystem> timeSystemOfEmployee4 = createTimesystems(timeSystemStudent4, timeSystemStudent5, timeSystemStudent6, timeSystemStudent7);
-        hashEmployee.put(employee4, timeSystemOfEmployee4);
+        List<TimeSheet> timeSheetOfEmployee4 = createTimesystems(timeSheetStudent4, timeSheetStudent5, timeSheetStudent6, timeSheetStudent7);
+        hashEmployee.put(employee4, timeSheetOfEmployee4);
 
         List<Employee> employeeList = createListOfEmployees(employee1, employee2, employee3, employee4);
 
@@ -90,13 +90,15 @@ public class Main {
         //filter(employeeList);
 
         //show(hashEmployee);
-        showRegistrationData(hashRegistrationIdOfEmployees);
+        //showRegistrationData(hashRegistrationIdOfEmployees);
+
+
     }
 
-    private static List<TimeSystem> createTimesystems(TimeSystem ...timeSystems){
-        List<TimeSystem> timeSystemList = new ArrayList<>();
-        timeSystemList.addAll(Arrays.asList(timeSystems));
-        return timeSystemList;
+    private static List<TimeSheet> createTimesystems(TimeSheet... timeSheets){
+        List<TimeSheet> timeSheetList = new ArrayList<>();
+        timeSheetList.addAll(Arrays.asList(timeSheets));
+        return timeSheetList;
     }
 
     private static List<Employee> createListOfEmployees(Employee ...employees){

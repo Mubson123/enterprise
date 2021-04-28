@@ -1,4 +1,4 @@
-public class TimeSystem {
+public class TimeSheet {
 
 //  attributs of the class------------------------------------------------------------------------------------
     private int employeeId;
@@ -7,7 +7,7 @@ public class TimeSystem {
 
 
 //  constructor of the class--------------------------------------------------------------------------------
-public TimeSystem(int employeeId, String day, double hours){
+public TimeSheet(int employeeId, String day, double hours){
     this.employeeId = employeeId;
     this.day = day;
     this.hours = hours;
