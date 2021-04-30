@@ -1,19 +1,21 @@
+package com.cedricmube.enterprise.model;
+
 public class TimeSheet {
 
 //  attributs of the class------------------------------------------------------------------------------------
     private int employeeId;
-    private String day;
+    private String days;
     private double hours;
+    private int id;
 
 
 //  constructor of the class--------------------------------------------------------------------------------
-public TimeSheet(int employeeId, String day, double hours){
+public TimeSheet(int id, String days, double hours, int employeeId){
+    this.id = id;
     this.employeeId = employeeId;
-    this.day = day;
+    this.days = days;
     this.hours = hours;
-}
-
-//  methods of the class------------------------------------------------------------------------------------
+    }
 
     public int getEmployeeId() {
         return employeeId;
@@ -23,12 +25,12 @@ public TimeSheet(int employeeId, String day, double hours){
         this.employeeId = employeeId;
     }
 
-    public String getDay() {
-        return day;
+    public String getDays() {
+        return days;
     }
 
-    public void setDay(String day) {
-        this.day = day;
+    public void setDays(String days) {
+        this.days = days;
     }
 
     public double getHours() {
@@ -37,5 +39,13 @@ public TimeSheet(int employeeId, String day, double hours){
 
     public void setHours(double hours) {
         this.hours = hours;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

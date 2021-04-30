@@ -1,18 +1,18 @@
 # enterprise
 
-- Create a class Role (id, name)
-- Create a class Groupe (id, name, role_id)
-- Create a class Login(id, email, password, employee_id)
-- Adjust the class Employee(id, salutation, firstname, lastname, birthDate, groupe_id)
-- Create a class Adress(id, county, city, street, employee_id)
+- Create a class com.cedricmube.enterprise.model.Role (id, name)
+- Create a class com.cedricmube.enterprise.model.Group (id, name, role_id)
+- Create a class com.cedricmube.enterprise.model.Login(id, email, password, employee_id)
+- Adjust the class com.cedricmube.enterprise.model.Employee(id, salutation, firstname, lastname, birthDate, groupe_id)
+- Create a class com.cedricmube.enterprise.model.Adress(id, county, city, street, employee_id)
 - Adjust the class Timesheet(id, days, hours, employee_id)
-- Create class Task(id, name, employee_id)
-- Create a class Child(id, parent_id, name) = this class represents the child of an employee
+- Create class com.cedricmube.enterprise.model.Task(id, name, employee_id)
+- Create a class com.cedricmube.enterprise.model.Child(id, parent_id, name) = this class represents the child of an employee
 
 
-- Create a class RoleGenerator  which generate some dummy roles (make you code nicer by using an array of rolesname)
-- Create a class GroupeGenerator  which generate some dummy groupes (.....................................groupesname)
-- Create a class EmployeeGenerator which generates some dummy Employee using an array of forstname, an array of lastname, an array of birthday
+- Create a class com.cedricmube.enterprise.utils.RoleGenerator  which generate some dummy roles (make you code nicer by using an array of rolesname)
+- Create a class com.cedricmube.enterprise.utils.GroupeGenerator  which generate some dummy groupes (.....................................groupesname)
+- Create a class EmployeeGenerator which generates some dummy com.cedricmube.enterprise.model.Employee using an array of forstname, an array of lastname, an array of birthday
 - Create a class LoginGenerator  which generate some logins using the generated employees 
 - Create a class AdressGenerator  which generate some adresses for the generated employees
 - Create a class TimesheetGenerator  which generate some timesheet for the generated employees

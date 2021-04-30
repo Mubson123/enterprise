@@ -1,3 +1,5 @@
+package com.cedricmube.enterprise.model;
+
 public class Child {
 
     private int id;

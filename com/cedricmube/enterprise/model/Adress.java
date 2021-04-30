@@ -1,17 +1,19 @@
+package com.cedricmube.enterprise.model;
+
 public class Adress {
 
     private int id;
     private String country;
     private String city;
     private String street;
-    private int employee_id;
+    private int employeeId;
 
-    public Adress(int id, String country, String city, String street, int employee_id){
+    public Adress(int id, String country, String city, String street, int employeeId){
         this.id = id;
         this.country = country;
         this.city = city;
         this.street = street;
-        this.employee_id = employee_id;
+        this.employeeId = employeeId;
     }
 
     public int getId() {
@@ -46,11 +48,11 @@ public class Adress {
         this.street = street;
     }
 
-    public int getEmployee_id() {
-        return employee_id;
+    public int getEmployeeId() {
+        return employeeId;
     }
 
-    public void setEmployee_id(int employee_id) {
-        this.employee_id = employee_id;
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
     }
 }

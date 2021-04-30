@@ -1,13 +1,15 @@
-public class Groupe {
+package com.cedricmube.enterprise.model;
+
+public class Group {
 
     private int id;
     private String name;
-    private String role_id;
+    private int role_id;
 
-    public Groupe(int id, String name, String role_id){
+    public Group(int id, String name, int roleId){
         this.id = id;
         this.name = name;
-        this.role_id = role_id;
+        this.role_id = roleId;
     }
 
     public int getId() {
@@ -26,11 +28,11 @@ public class Groupe {
         this.name = name;
     }
 
-    public String getRole_id() {
+    public int getRole_id() {
         return role_id;
     }
 
-    public void setRole_id(String role_id) {
+    public void setRole_id(int role_id) {
         this.role_id = role_id;
     }
 }

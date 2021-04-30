@@ -1,3 +1,9 @@
+package com.cedricmube.enterprise;
+
+import com.cedricmube.enterprise.model.Employee;
+import com.cedricmube.enterprise.model.Login;
+import com.cedricmube.enterprise.model.TimeSheet;
+
 import java.util.*;
 
 public class Main {
@@ -9,8 +15,9 @@ public class Main {
             List<TimeSheet> timeSheets = hashEmployee.get(employee);
 
             for (TimeSheet time : timeSheets){
-                System.out.println(employee.getName() + ", " + employee.getSurname()
-                        + "; " + employee.getAge() + " years old " +": " + time.getDay()
+                System.out.println(employee.getSalutation() + " " + employee.getLastname()
+                        + ", " + employee.getFirstname()
+                        + "; " + employee.getBirthDate() + " years old " +": " + time.getDay()
                         + " -> " + time.getHours() + " hours");
             }
         }
@@ -20,9 +27,10 @@ public class Main {
         System.out.println("All employees belows 20 years old:");
 
         for (Employee employee : employeeList) {
-            if (employee.getAge() < 20) { //employees below 20 years old
-                System.out.println(employee.getName() + ", " + employee.getSurname()
-                        + ": " + employee.getAge());
+            if (employee.getAge(employee.getBirthDate()) < 20) { //employees below 20 years old
+                System.out.println(employee.getSalutation() + " " +
+                        employee.getLastname() + ", " + employee.getFirstname()
+                        + ": " + employee.getAge(employee.getBirthDate()));
             }
         }
     }
@@ -32,15 +40,16 @@ public class Main {
 
         for (Employee employee : hashEmployeeRegistrationId.keySet()) {
                 Login login = hashEmployeeRegistrationId.get(employee);
-                System.out.println(employee.getName() + ", " + employee.getSurname() + ": email (" +
-                        login.geteMail() + "), password(" + login.getPassword() + ")");
+                System.out.println(employee.getSalutation() + " " + employee.getLastname() +
+                        ", " + employee.getFirstname() + ": email (" +
+                        login.getEmail() + "), password(" + login.getPassword() + ")");
             }
         }
 
 
     public static void main(String[] args){
 
-        Employee employee1 = new Employee("Goeth", "Joerg", "joerggeoth@hotmail.de", 28, 51210);
+        Employee employee1 = new Employee(51210, "Herr ","Goeth", "Joerg",  1983, 0);
         TimeSheet timeSheet1 = new TimeSheet(51210, "Mondays", 8.5);
         TimeSheet timeSheet2 = new TimeSheet(51210, "Tuesday", 8.3);
         TimeSheet timeSheet3 = new TimeSheet(51210, "Wednesday", 5.5);
@@ -48,7 +57,7 @@ public class Main {
         TimeSheet timeSheet5 = new TimeSheet(51210, "Friday", 3.9);
 
 
-        Employee employee2 = new Employee("Heinrich", "Martha", "marthaheinrich@hotmail.de", 32, 51835);
+        Employee employee2 = new Employee(51835, "Frau ","Heinrich", "Martha", 1990, 32);
         TimeSheet timeSheet6 = new TimeSheet(51835, "Mondays", 8.0);
         TimeSheet timeSheet7 = new TimeSheet(51835, "Tuesday", 7.5);
         TimeSheet timeSheet8 = new TimeSheet(51835, "Wednesday", 5.5);
@@ -56,16 +65,15 @@ public class Main {
         TimeSheet timeSheet10 = new TimeSheet(51835, "Friday", 5.2);
 
 
-        Employee employee3 = new Employee("Reinberg", "Harry", "harryreinberg@hotmail.de", 19, 28457);
+        Employee employee3 = new Employee(28457,"Herr ", "Reinberg", "Harry", 2004, 19);
         TimeSheet timeSheetStudent1 = new TimeSheet(28457, "Tuesday", 8.0);
         TimeSheet timeSheetStudent2 = new TimeSheet(28457, "Thursday", 8.0);
         TimeSheet timeSheetStudent3 = new TimeSheet(28457, "Friday", 4.0);
 
-        Employee employee4 = new Employee("Vongraber", "Jessica", "jessicavongraber@hotmail.de", 18, 28256);
+        Employee employee4 = new Employee(28256, "Frau ","Vongraber", "Jessica", 2005, 18);
         TimeSheet timeSheetStudent4 = new TimeSheet(28256, "Monday", 6.0);
         TimeSheet timeSheetStudent5 = new TimeSheet(28256, "Wednesday", 6.0);
         TimeSheet timeSheetStudent6 = new TimeSheet(28256, "Thursday", 4.0);
-        TimeSheet timeSheetStudent7 = new TimeSheet(28256, "Thursday", 4.0);
 
         HashMap<Employee, List<TimeSheet>> hashEmployee = new HashMap<>();
 
@@ -78,7 +86,7 @@ public class Main {
         List<TimeSheet> timeSheetOfEmployee3 = createTimesystems(timeSheetStudent1, timeSheetStudent2, timeSheetStudent3);
         hashEmployee.put(employee3, timeSheetOfEmployee3);
 
-        List<TimeSheet> timeSheetOfEmployee4 = createTimesystems(timeSheetStudent4, timeSheetStudent5, timeSheetStudent6, timeSheetStudent7);
+        List<TimeSheet> timeSheetOfEmployee4 = createTimesystems(timeSheetStudent4, timeSheetStudent5, timeSheetStudent6);
         hashEmployee.put(employee4, timeSheetOfEmployee4);
 
         List<Employee> employeeList = createListOfEmployees(employee1, employee2, employee3, employee4);
@@ -101,7 +109,7 @@ public class Main {
         return timeSheetList;
     }
 
-    private static List<Employee> createListOfEmployees(Employee ...employees){
+    private static List<Employee> createListOfEmployees(Employee...employees){
         List<Employee> employeesList = new ArrayList<>();
         employeesList.addAll(Arrays.asList(employees));
         return employeesList;
@@ -111,7 +119,7 @@ public class Main {
         HashMap<Employee, Login> loginMapOfEmployees = new HashMap<>();
         int i = 0;
         for (Employee employee : employees){
-            Login login = new Login(employee.geteMail(), passwords[i++]);
+            Login login = new Login(employee.getFirstname(), passwords[i++]);
             loginMapOfEmployees.put(employee, login);
         }
         return loginMapOfEmployees;
