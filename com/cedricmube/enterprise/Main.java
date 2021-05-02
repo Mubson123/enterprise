@@ -10,15 +10,11 @@ public class Main {
 
     public static void show(List<HashMap<Employee, List<TimeSheet>>> hashMapList){ // show the employees informations
         System.out.println("All employees with their personal informations");
-
-
         for ( HashMap<Employee, List<TimeSheet>> hashlist : hashMapList) {
             for (Employee employee: hashlist.keySet()){
                 List<TimeSheet> timeSheets = hashlist.get(employee);
                 for (TimeSheet timeOfEmployee : timeSheets) {
-                    System.out.println(employee.getSalutation() + " " + employee.getLastname()
-                            + ", " + employee.getFirstname()
-                            + "; " + employee.getAge() +
+                    System.out.println(employee.getSalutation() + " " + employee.getLastname() + ", " + employee.getFirstname() + "; " + employee.getAge() +
                             " years old " + ": " + timeOfEmployee.getDays() + " -> " + timeOfEmployee.getHours() + " hours");
                 }
             }
@@ -30,9 +26,7 @@ public class Main {
 
         for (Employee employee : employeeList) {
             if (employee.getAge() < 20) { //employees below 20 years old
-                System.out.println(employee.getSalutation() + " " +
-                        employee.getLastname() + ", " + employee.getFirstname()
-                        + ": " + employee.getAge());
+                System.out.println(employee.getSalutation() + " " + employee.getLastname() + ", " + employee.getFirstname() + ": " + employee.getAge());
             }
         }
     }
@@ -48,19 +42,18 @@ public class Main {
     }
 
     public static HashMap<Employee, List<TimeSheet>> employeeTimeSheetHashMap(Employee employee, int timeSheetId, String[] days, double[] hours) {
-        int i = 0;
         HashMap<Employee, List<TimeSheet>> timeSheetEmployeesMap = new HashMap<>();
         List<TimeSheet> timeSheetList = new ArrayList<>();
-        timeSheetList.add(new TimeSheet(timeSheetId, days[i++], hours[i++], employee.getId()));
-        timeSheetEmployeesMap.put(employee, timeSheetList);
+        for (int j = 0; j < hours.length; j++) {
+            timeSheetList.add(new TimeSheet(timeSheetId, days[j], hours[j], employee.getId()));
+            timeSheetEmployeesMap.put(employee, timeSheetList);
+        }
         return  timeSheetEmployeesMap;
-
     }
 
-    public static List<HashMap<Employee, List<TimeSheet>>> listOfMapForEmployeeAndTheirTimeSheet(HashMap<Employee, List<TimeSheet>> ...hashEmployee) {
-        List<HashMap<Employee, List<TimeSheet>>> hashMapList = new ArrayList<>();
-        hashMapList.addAll(Arrays.asList(hashEmployee));
-        return hashMapList;
+    @SafeVarargs
+    public static List<HashMap<Employee, List<TimeSheet>>> mapListOfEmployeeAndTheirTimeSheet(HashMap<Employee, List<TimeSheet>> ...hashEmployee) {
+        return new ArrayList<>(Arrays.asList(hashEmployee));
     }
 
     public static void main(String[] args){
@@ -74,29 +67,31 @@ public class Main {
         Employee employee3 = new Employee(7500,"Herr ", "Reinberg", "Harry", 2002, 9, 30, 15);
         HashMap<Employee, List<TimeSheet>> hashEmployee3 = employeeTimeSheetHashMap(employee3, 2501, new String[]{"Tuesday","Tuesday","Friday"}, new double[]{8.0, 8.0, 4.0});
 
-        Employee employee4 = new Employee(7501, "Frau ","Vongraber", "Jessica", 2003, 11, 03, 15);
+        Employee employee4 = new Employee(7501, "Frau ","Vongraber", "Jessica", 2003, 11, 3, 15);
         HashMap<Employee, List<TimeSheet>> hashEmployee4 = employeeTimeSheetHashMap(employee4, 2502, new String[]{"Monday","Wednesday","Thursday"}, new double[]{6.0, 6.0, 4.0});
 
-        List<HashMap<Employee, List<TimeSheet>>> hashList = new ArrayList<>();
-        hashList = listOfMapForEmployeeAndTheirTimeSheet(hashEmployee1, hashEmployee2, hashEmployee3, hashEmployee4);
+        List<HashMap<Employee, List<TimeSheet>>> hashList;
+        hashList = mapListOfEmployeeAndTheirTimeSheet(hashEmployee1, hashEmployee2, hashEmployee3, hashEmployee4);
 
         List<Employee> employeeList = createListOfEmployees(employee1, employee2, employee3, employee4);
 
-        HashMap<Employee, Login> hashRegistrationIdOfEmployees =
-        createLoginMapOfEmployees(23 ,new Employee[]{employee1, employee2, employee3, employee4},
-                new String[]{"63656725", "8656749", "858358", "9476037"});
+        HashMap<Employee, Login> hashRegistrationIdOfEmployees1 =
+        createLoginMapOfEmployees(23 ,new Employee[]{employee1, employee2},
+                new String[]{"63656725", "8656749"});
+
+        HashMap<Employee, Login> hashRegistrationIdOfEmployees2 =
+                createLoginMapOfEmployees(30 ,new Employee[]{employee3, employee4},
+                        new String[]{"858358", "9476037"});
 
         filter(employeeList);
-
         show(hashList);
-        showRegistrationData(hashRegistrationIdOfEmployees);
+        showRegistrationData(hashRegistrationIdOfEmployees1);
+        showRegistrationData(hashRegistrationIdOfEmployees2);
 
 
     }
     private static List<Employee> createListOfEmployees(Employee...employees){
-        List<Employee> employeesList = new ArrayList<>();
-        employeesList.addAll(Arrays.asList(employees));
-        return employeesList;
+        return new ArrayList<>(Arrays.asList(employees));
     }
 
     private static HashMap<Employee, Login> createLoginMapOfEmployees(int loginId, Employee[] employees, String[] passwords){
@@ -108,6 +103,5 @@ public class Main {
         }
         return loginMapOfEmployees;
     }
-
 
 }
