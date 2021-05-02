@@ -12,8 +12,8 @@
 
 - Create a class com.cedricmube.enterprise.utils.RoleGenerator  which generate some dummy roles (make you code nicer by using an array of rolesname)
 - Create a class com.cedricmube.enterprise.utils.GroupeGenerator  which generate some dummy groupes (.....................................groupesname)
-- Create a class EmployeeGenerator which generates some dummy com.cedricmube.enterprise.model.Employee using an array of forstname, an array of lastname, an array of birthday
-- Create a class LoginGenerator  which generate some logins using the generated employees 
+- Create a class EmployeeGenerator which generates some dummy com.cedricmube.enterprise.model.Employee using an array of firstname, an array of lastname, an array of birthday
+- Create a class LoginGenerator  which generate some logins using the generated employees
 - Create a class AdressGenerator  which generate some adresses for the generated employees
 - Create a class TimesheetGenerator  which generate some timesheet for the generated employees
 - Create a class TaskGenerator  which generate some tasks for the generated employees
@@ -26,4 +26,3 @@
 - all Employees login (firstname, lastname, email, password)
 - all Employees adress (firstname, lastname, country, city, street)
 - all Employees (firstname, lastname, age)
-  

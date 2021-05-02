@@ -2,38 +2,45 @@ package com.cedricmube.enterprise.model;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.Calendar;
 
 public class Employee {
 
 //  attributs of the class------------------------------------------------------------------------------------
     private String firstname;
     private String lastname;
-    private int birthDate;
+    private int birthYear;
+    private int birthMonth;
+    private int birthDay;
     private String salutation;
     private int groupeId;
     private int id;
 
 
 // constructor of the class--------------------------------------------------------------------------------
-    public Employee(int id, String salutation, String firstname, String lastname,
-                    int birthDate, int groupeId){
+    public Employee(int id, String salutation, String firstname, String lastname,int birthYear,
+                    int birthMonth, int birthDay, int groupeId){
         this.id = id;
         this.salutation = salutation;
         this.firstname = firstname;
         this.lastname = lastname;
-        this.birthDate  = birthDate;
+        this.birthYear = birthYear;
+        this.birthMonth = birthMonth;
+        this.birthDay = birthDay;
         this.groupeId = groupeId;
     }
 
-    public int getAge( int year, int month, int day) {
-        LocalDate birthDate = LocalDate.of(year, month, day);
+    public int getAge() {
+        LocalDate birthDate = LocalDate.of(this.birthYear, this.birthMonth, this.birthDay);
         LocalDate currentDate = LocalDate.now();
         return Period.between(birthDate, currentDate).getYears();
     }
 
+    public String generateEMail(){
+        return this.firstname+this.lastname+"@enterpriseX.de";
+    }
+
     public String getFirstname() {
-        return firstname;
+        return this.firstname;
     }
 
     public void setFirstname(String firstname) {
@@ -41,23 +48,39 @@ public class Employee {
     }
 
     public String getLastname() {
-        return lastname;
+        return this.lastname;
     }
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
 
-    public int getBirthDate() {
-        return birthDate;
+    public int getBirthYear() {
+        return this.birthYear;
     }
 
-    public void setBirthDate(int birthDate) {
-        this.birthDate = birthDate;
+    public void setBirthYear(int birthYear) {
+        this.birthYear = birthYear;
+    }
+
+    public int getBirthMonth() {
+        return this.birthMonth;
+    }
+
+    public void setBirthMonth(int birthMonth) {
+        this.birthMonth = birthMonth;
+    }
+
+    public int getBirthDay() {
+        return this.birthDay;
+    }
+
+    public void setBirthDay(int birthDay) {
+        this.birthDay = birthDay;
     }
 
     public String getSalutation() {
-        return salutation;
+        return this.salutation;
     }
 
     public void setSalutation(String salutation) {
@@ -65,7 +88,7 @@ public class Employee {
     }
 
     public int getGroupeId() {
-        return groupeId;
+        return this.groupeId;
     }
 
     public void setGroupeId(int groupeId) {
@@ -73,7 +96,7 @@ public class Employee {
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {

@@ -8,17 +8,19 @@ import java.util.*;
 
 public class Main {
 
-    public static void show(HashMap<Employee, List<TimeSheet>> hashEmployee){ // show the employees informations
+    public static void show(List<HashMap<Employee, List<TimeSheet>>> hashMapList){ // show the employees informations
         System.out.println("All employees with their personal informations");
 
-        for (Employee employee : hashEmployee.keySet()) {
-            List<TimeSheet> timeSheets = hashEmployee.get(employee);
 
-            for (TimeSheet time : timeSheets){
-                System.out.println(employee.getSalutation() + " " + employee.getLastname()
-                        + ", " + employee.getFirstname()
-                        + "; " + employee.getBirthDate() + " years old " +": " + time.getDay()
-                        + " -> " + time.getHours() + " hours");
+        for ( HashMap<Employee, List<TimeSheet>> hashlist : hashMapList) {
+            for (Employee employee: hashlist.keySet()){
+                List<TimeSheet> timeSheets = hashlist.get(employee);
+                for (TimeSheet timeOfEmployee : timeSheets) {
+                    System.out.println(employee.getSalutation() + " " + employee.getLastname()
+                            + ", " + employee.getFirstname()
+                            + "; " + employee.getAge() +
+                            " years old " + ": " + timeOfEmployee.getDays() + " -> " + timeOfEmployee.getHours() + " hours");
+                }
             }
         }
     }
@@ -27,99 +29,81 @@ public class Main {
         System.out.println("All employees belows 20 years old:");
 
         for (Employee employee : employeeList) {
-            if (employee.getAge(employee.getBirthDate()) < 20) { //employees below 20 years old
+            if (employee.getAge() < 20) { //employees below 20 years old
                 System.out.println(employee.getSalutation() + " " +
                         employee.getLastname() + ", " + employee.getFirstname()
-                        + ": " + employee.getAge(employee.getBirthDate()));
+                        + ": " + employee.getAge());
             }
         }
     }
 
     public static void showRegistrationData(HashMap<Employee, Login> hashEmployeeRegistrationId){//show Any employee with his name and password
         System.out.println("Any employee with his name and password:");
-
         for (Employee employee : hashEmployeeRegistrationId.keySet()) {
                 Login login = hashEmployeeRegistrationId.get(employee);
                 System.out.println(employee.getSalutation() + " " + employee.getLastname() +
                         ", " + employee.getFirstname() + ": email (" +
                         login.getEmail() + "), password(" + login.getPassword() + ")");
-            }
         }
+    }
 
+    public static HashMap<Employee, List<TimeSheet>> employeeTimeSheetHashMap(Employee employee, int timeSheetId, String[] days, double[] hours) {
+        int i = 0;
+        HashMap<Employee, List<TimeSheet>> timeSheetEmployeesMap = new HashMap<>();
+        List<TimeSheet> timeSheetList = new ArrayList<>();
+        timeSheetList.add(new TimeSheet(timeSheetId, days[i++], hours[i++], employee.getId()));
+        timeSheetEmployeesMap.put(employee, timeSheetList);
+        return  timeSheetEmployeesMap;
+
+    }
+
+    public static List<HashMap<Employee, List<TimeSheet>>> listOfMapForEmployeeAndTheirTimeSheet(HashMap<Employee, List<TimeSheet>> ...hashEmployee) {
+        List<HashMap<Employee, List<TimeSheet>>> hashMapList = new ArrayList<>();
+        hashMapList.addAll(Arrays.asList(hashEmployee));
+        return hashMapList;
+    }
 
     public static void main(String[] args){
 
-        Employee employee1 = new Employee(51210, "Herr ","Goeth", "Joerg",  1983, 0);
-        TimeSheet timeSheet1 = new TimeSheet(51210, "Mondays", 8.5);
-        TimeSheet timeSheet2 = new TimeSheet(51210, "Tuesday", 8.3);
-        TimeSheet timeSheet3 = new TimeSheet(51210, "Wednesday", 5.5);
-        TimeSheet timeSheet4 = new TimeSheet(51210, "Thursday", 8.5);
-        TimeSheet timeSheet5 = new TimeSheet(51210, "Friday", 3.9);
+        Employee employee1 = new Employee(5100, "Herr ","Goeth", "Joerg",  1983, 12, 25, 10);
+        HashMap<Employee, List<TimeSheet>> hashEmployee1 = employeeTimeSheetHashMap(employee1, 1004, new String[]{"Mondays","Tuesday","Wednesday","Thursday","Friday",}, new double[]{8.5,8.3,5.5,8.5,3.9});
 
+        Employee employee2 = new Employee(5101, "Frau ","Heinrich", "Martha", 1990, 5, 17, 10);
+        HashMap<Employee, List<TimeSheet>> hashEmployee2 = employeeTimeSheetHashMap(employee2, 1005, new String[]{"Mondays","Tuesday","Wednesday","Thursday","Friday",}, new double[]{8.0,7.5,5.5,9.0,5.2});
 
-        Employee employee2 = new Employee(51835, "Frau ","Heinrich", "Martha", 1990, 32);
-        TimeSheet timeSheet6 = new TimeSheet(51835, "Mondays", 8.0);
-        TimeSheet timeSheet7 = new TimeSheet(51835, "Tuesday", 7.5);
-        TimeSheet timeSheet8 = new TimeSheet(51835, "Wednesday", 5.5);
-        TimeSheet timeSheet9 = new TimeSheet(51835, "Thursday", 9.0);
-        TimeSheet timeSheet10 = new TimeSheet(51835, "Friday", 5.2);
+        Employee employee3 = new Employee(7500,"Herr ", "Reinberg", "Harry", 2002, 9, 30, 15);
+        HashMap<Employee, List<TimeSheet>> hashEmployee3 = employeeTimeSheetHashMap(employee3, 2501, new String[]{"Tuesday","Tuesday","Friday"}, new double[]{8.0, 8.0, 4.0});
 
+        Employee employee4 = new Employee(7501, "Frau ","Vongraber", "Jessica", 2003, 11, 03, 15);
+        HashMap<Employee, List<TimeSheet>> hashEmployee4 = employeeTimeSheetHashMap(employee4, 2502, new String[]{"Monday","Wednesday","Thursday"}, new double[]{6.0, 6.0, 4.0});
 
-        Employee employee3 = new Employee(28457,"Herr ", "Reinberg", "Harry", 2004, 19);
-        TimeSheet timeSheetStudent1 = new TimeSheet(28457, "Tuesday", 8.0);
-        TimeSheet timeSheetStudent2 = new TimeSheet(28457, "Thursday", 8.0);
-        TimeSheet timeSheetStudent3 = new TimeSheet(28457, "Friday", 4.0);
-
-        Employee employee4 = new Employee(28256, "Frau ","Vongraber", "Jessica", 2005, 18);
-        TimeSheet timeSheetStudent4 = new TimeSheet(28256, "Monday", 6.0);
-        TimeSheet timeSheetStudent5 = new TimeSheet(28256, "Wednesday", 6.0);
-        TimeSheet timeSheetStudent6 = new TimeSheet(28256, "Thursday", 4.0);
-
-        HashMap<Employee, List<TimeSheet>> hashEmployee = new HashMap<>();
-
-        List<TimeSheet> timeSheetOfEmployee1 = createTimesystems(timeSheet1, timeSheet2, timeSheet3, timeSheet4, timeSheet5);
-        hashEmployee.put(employee2, timeSheetOfEmployee1);
-
-        List<TimeSheet> timeSheetOfEmployee2 = createTimesystems(timeSheet6, timeSheet7, timeSheet8, timeSheet9, timeSheet10);
-        hashEmployee.put(employee2, timeSheetOfEmployee2);
-
-        List<TimeSheet> timeSheetOfEmployee3 = createTimesystems(timeSheetStudent1, timeSheetStudent2, timeSheetStudent3);
-        hashEmployee.put(employee3, timeSheetOfEmployee3);
-
-        List<TimeSheet> timeSheetOfEmployee4 = createTimesystems(timeSheetStudent4, timeSheetStudent5, timeSheetStudent6);
-        hashEmployee.put(employee4, timeSheetOfEmployee4);
+        List<HashMap<Employee, List<TimeSheet>>> hashList = new ArrayList<>();
+        hashList = listOfMapForEmployeeAndTheirTimeSheet(hashEmployee1, hashEmployee2, hashEmployee3, hashEmployee4);
 
         List<Employee> employeeList = createListOfEmployees(employee1, employee2, employee3, employee4);
 
         HashMap<Employee, Login> hashRegistrationIdOfEmployees =
-        createLoginMapOfEmployees(new Employee[]{employee1, employee2, employee3, employee4},
+        createLoginMapOfEmployees(23 ,new Employee[]{employee1, employee2, employee3, employee4},
                 new String[]{"63656725", "8656749", "858358", "9476037"});
 
-        //filter(employeeList);
+        filter(employeeList);
 
-        //show(hashEmployee);
-        //showRegistrationData(hashRegistrationIdOfEmployees);
+        show(hashList);
+        showRegistrationData(hashRegistrationIdOfEmployees);
 
 
     }
-
-    private static List<TimeSheet> createTimesystems(TimeSheet... timeSheets){
-        List<TimeSheet> timeSheetList = new ArrayList<>();
-        timeSheetList.addAll(Arrays.asList(timeSheets));
-        return timeSheetList;
-    }
-
     private static List<Employee> createListOfEmployees(Employee...employees){
         List<Employee> employeesList = new ArrayList<>();
         employeesList.addAll(Arrays.asList(employees));
         return employeesList;
     }
 
-    private static HashMap<Employee, Login> createLoginMapOfEmployees(Employee[] employees, String[] passwords){
+    private static HashMap<Employee, Login> createLoginMapOfEmployees(int loginId, Employee[] employees, String[] passwords){
         HashMap<Employee, Login> loginMapOfEmployees = new HashMap<>();
         int i = 0;
         for (Employee employee : employees){
-            Login login = new Login(employee.getFirstname(), passwords[i++]);
+            Login login = new Login(loginId, employee.generateEMail(), passwords[i++], employee.getId());
             loginMapOfEmployees.put(employee, login);
         }
         return loginMapOfEmployees;
