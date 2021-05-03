@@ -21,7 +21,7 @@ public class Group {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -29,7 +29,7 @@ public class Group {
     }
 
     public int getRole_id() {
-        return role_id;
+        return this.role_id;
     }
 
     public void setRole_id(int role_id) {

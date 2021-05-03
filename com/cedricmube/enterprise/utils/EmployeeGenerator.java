@@ -24,7 +24,7 @@ public class EmployeeGenerator {
         int[] birthMonth = {2, 6, 5, 5, 1, 7, 8};
         int[] birthDay = {19, 3, 15, 28, 10, 30, 1};
 
-        for (int i = 0; i < employees.size(); i++){
+        for (int i = 0; i < firstnames.length; i++){
             employees.add(new Employee(i, "Mr. ", firstnames[i], lastnames[i],
                     birthYear[i], birthMonth[i], birthDay[i],
                     GroupeGenerator.generateGroup().get(i).getId()));

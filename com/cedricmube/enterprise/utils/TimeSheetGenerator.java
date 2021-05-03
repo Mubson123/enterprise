@@ -17,9 +17,9 @@ public class TimeSheetGenerator {
         List<TimeSheet> timeSheetList = new ArrayList<>();
         String[] days = {"Monday","Tuesday","Wednesday","Thursday",
                 "Friday"};
-        double[] hours = {8.0,8.0,8.0,8.0,8.0};
+        double[] hours = {8.0,8.0,8.0,8.0,8.0,8.0};
 
-        for (int i = 0; i < timeSheetList.size(); i++) {
+        for (int i = 0; i < days.length; i++) {
             timeSheetList.add(new TimeSheet(i, days[i], hours[i],
                     EmployeeGenerator.generateEmployee().get(i).getId()));
         }

@@ -13,7 +13,7 @@ public class Child {
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -21,7 +21,7 @@ public class Child {
     }
 
     public int getParent_id() {
-        return parent_id;
+        return this.parent_id;
     }
 
     public void setParent_id(int parent_id) {
@@ -29,7 +29,7 @@ public class Child {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {

@@ -18,12 +18,10 @@ public class TaskGenerator {
         List<Task> taskList = new ArrayList<>();
         String[] tasksNames = {"secure the city", "transport the passengers at home",
         "verify the economic's state of the enterprise", "to do meteo's previsions",
-        "clean up the IT-System of the industry", "Manage employees", "take " +
-                " online commands of clients", "to do reports of work of any employee"};
+        "clean up the IT-System of the industry", "Manage employees", "take online commands of clients"};
 
-        for (int i = 0; i < taskList.size(); i++) {
-            taskList.add(new Task(i,tasksNames[i], EmployeeGenerator.generateEmployee().get(i).getId(),
-                    TimeSheetGenerator.generateTimeSheet().get(i).getHours()));
+        for (int i = 0; i < tasksNames.length; i++) {
+            taskList.add(new Task(i,tasksNames[i], EmployeeGenerator.generateEmployee().get(i).getId()));
         }
         return taskList;
     }

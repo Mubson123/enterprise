@@ -22,10 +22,10 @@ public class AdressGenerator {
         String[] countries = {"Germany", "Germany", "France", "Swiss", "Austria",
         "Great Britain", "Belgium"};
 
-        String[] streets = {" Haagstrasse 12, ", " Nuernbergerstrasse 23, ", " rue Laurent-Dupont,",
-        "Goathstrasse 124, ", "Wiener Str. 47, ", "Great-Hall street 98", "rue des Oilles, "};
+        String[] streets = {" Haagstrasse 12", " Nuernbergerstrasse 23", " rue Laurent-Dupont 39",
+        "Goathstrasse 124", "Wiener Str. 47", "Great-Hall street 98", "rue des Oilles 46"};
 
-        for (int i = 0; i < adressList.size(); i++) {
+        for (int i = 0; i < countries.length; i++) {
             adressList.add(new Adress(i, countries[i], cities[i], streets[i],
                     EmployeeGenerator.generateEmployee().get(i).getId()));
         }

@@ -5,11 +5,9 @@ public class Task {
     private int id;
     private String name;
     private int employee_id;
-    private double time;
 
-    public Task(int id, String name, int employee_id, double time){
+    public Task(int id, String name, int employee_id){
         this.id = id;
-        this.time = time;
         this.name = name;
         this.employee_id = employee_id;
     }
@@ -23,7 +21,7 @@ public class Task {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -31,18 +29,10 @@ public class Task {
     }
 
     public int getEmployee_id() {
-        return employee_id;
+        return this.employee_id;
     }
 
     public void setEmployee_id(int employee_id) {
         this.employee_id = employee_id;
-    }
-
-    public double getTime() {
-        return time;
-    }
-
-    public void setTime(double time) {
-        this.time = time;
     }
 }
