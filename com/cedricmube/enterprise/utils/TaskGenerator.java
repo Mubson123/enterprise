@@ -7,13 +7,6 @@ import java.util.List;
 
 public class TaskGenerator {
 
-    /**
-     * id,
-     * name,
-     * employee_id
-     * hours
-     */
-
     public static List<Task> generateTask() {
         List<Task> taskList = new ArrayList<>();
         String[] tasksNames = {"secure the city", "transport the passengers at home",

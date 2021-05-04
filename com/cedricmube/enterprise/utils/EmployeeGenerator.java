@@ -1,18 +1,10 @@
 package com.cedricmube.enterprise.utils;
 
 import com.cedricmube.enterprise.model.Employee;
-import com.cedricmube.enterprise.utils.GroupeGenerator;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeGenerator {
-    /**
-     * Array of firstname
-     * Array of Lastname
-     * Array of Birthdate
-     */
-
 
     public static List<Employee> generateEmployee() {
         List<Employee> employees = new ArrayList<>();

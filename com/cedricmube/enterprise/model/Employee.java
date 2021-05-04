@@ -43,63 +43,16 @@ public class Employee {
         return this.firstname;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
     public String getLastname() {
         return this.lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public int getBirthYear() {
-        return this.birthYear;
-    }
-
-    public void setBirthYear(int birthYear) {
-        this.birthYear = birthYear;
-    }
-
-    public int getBirthMonth() {
-        return this.birthMonth;
-    }
-
-    public void setBirthMonth(int birthMonth) {
-        this.birthMonth = birthMonth;
-    }
-
-    public int getBirthDay() {
-        return this.birthDay;
-    }
-
-    public void setBirthDay(int birthDay) {
-        this.birthDay = birthDay;
     }
 
     public String getSalutation() {
         return this.salutation;
     }
 
-    public void setSalutation(String salutation) {
-        this.salutation = salutation;
-    }
-
-    public int getGroupeId() {
-        return this.groupeId;
-    }
-
-    public void setGroupeId(int groupeId) {
-        this.groupeId = groupeId;
-    }
-
     public int getId() {
         return this.id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 }

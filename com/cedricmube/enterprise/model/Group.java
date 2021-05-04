@@ -24,15 +24,4 @@ public class Group {
         return this.name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getRole_id() {
-        return this.role_id;
-    }
-
-    public void setRole_id(int role_id) {
-        this.role_id = role_id;
-    }
 }

@@ -1,18 +1,10 @@
 package com.cedricmube.enterprise.utils;
 
 import com.cedricmube.enterprise.model.Adress;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class AdressGenerator {
-    /**
-     * id
-     * country
-     * city
-     * street
-     * employee_id
-     */
 
     public static List<Adress> generateAdress() {
         List<Adress> adressList = new ArrayList<>();

@@ -1,19 +1,10 @@
 package com.cedricmube.enterprise.utils;
 
 import com.cedricmube.enterprise.model.Login;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class LoginGenerator {
-
-    /** Parameters of class Employee
-     * id
-     * email
-     * password
-     * employeeId
-     * @return
-     */
 
     public static List<Login> generateLogin() {
         List<Login> loginList = new ArrayList<>();

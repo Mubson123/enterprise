@@ -1,17 +1,10 @@
 package com.cedricmube.enterprise.utils;
 
 import com.cedricmube.enterprise.model.TimeSheet;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class TimeSheetGenerator {
-    /**
-     * id,
-     * days,
-     * hours,
-     * employee_id
-     */
 
     public static List<TimeSheet> generateTimeSheet(){
         List<TimeSheet> timeSheetList = new ArrayList<>();
