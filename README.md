@@ -31,3 +31,4 @@
 - Make Generator classes leaner by improving the methods
 - Create a class ModelConnector to connect Employee with other model
 - Create a class ConntorManager qui appel les methodes de la Class ModelConnector afin the cree un ou des Employee(s) avec toutes ses connections(Adress, Timesheet, children...)
+- pour tester pull
