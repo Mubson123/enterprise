@@ -2,13 +2,11 @@ package com.cedricmube.enterprise.model;
 
 public class Login {
 
-    //attributes of the class-------------------------------------------------------------------------------
     private int id;
     private String password;
     private String email;
     private int employeeId;
 
-    //constructor of the class------------------------------------------------------------------------------
     public Login(int id ,String email, String password, int employeeId){
         this.id = id;
         this.email = email;

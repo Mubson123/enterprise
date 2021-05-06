@@ -12,36 +12,55 @@ import java.util.List;
 public class Previous {
 
     public static void show(List<HashMap<Employee, List<TimeSheet>>> hashMapList){ // show the employees informations
-        System.out.println("All employees with their personal informations");
+        System.out.println();
+        System.out.println("Alle MitarbeiterIn, ihre Alter und ihre Arbeitszeiten");
+        System.out.println("-----------------------------------------------------");
+        System.out.println();
+        System.out.println("Vorname, Nachname, Alter : Tage -> Stunden");
+        System.out.println("==========================================");
         for ( HashMap<Employee, List<TimeSheet>> hashlist : hashMapList) {
             for (Employee employee: hashlist.keySet()){
                 List<TimeSheet> timeSheets = hashlist.get(employee);
                 for (TimeSheet timeOfEmployee : timeSheets) {
-                    System.out.println(employee.getSalutation() + " " + employee.getLastname() + ", " + employee.getFirstname() + "; " + employee.getAge() +
-                            " years old " + ": " + timeOfEmployee.getDays() + " -> " + timeOfEmployee.getHours() + " hours");
+                    System.out.println(employee.getSalutation() + " " + employee.getLastname() + ", " + employee.getFirstname() + ", " + employee.getAge() + " : " + timeOfEmployee.getDays() + " -> " + timeOfEmployee.getHours() + " hours");
                 }
             }
         }
+        System.out.println();
+        System.out.println();
     }
 
     public static void filter(List<Employee> employeeList){//show the employee belows 20 years old
-        System.out.println("All employees belows 20 years old:");
-
+        System.out.println();
+        System.out.println("Alle Mitarbeiter unter 20 Jahre alt");
+        System.out.println("-----------------------------------");
+        System.out.println();
+        System.out.println("Vorname, Nachname : Alter");
+        System.out.println("=========================");
         for (Employee employee : employeeList) {
-            if (employee.getAge() < 20) { //employees below 20 years old
+            if (employee.getAge() < 20) { //all employees below 20 years old
                 System.out.println(employee.getSalutation() + " " + employee.getLastname() + ", " + employee.getFirstname() + ": " + employee.getAge());
             }
         }
+        System.out.println();
+        System.out.println();
     }
 
-    public static void showRegistrationData(HashMap<Employee, Login> hashEmployeeRegistrationId){//show Any employee with his name and password
-        System.out.println("Any employee with his name and password:");
+    public static void showRegistrationData(HashMap<Employee, Login> hashEmployeeRegistrationId){//show Any employee with his name, his email and password
+        System.out.println();
+        System.out.println("jede/r MitarbeiterIn mit ihren/seinen Login Daten");
+        System.out.println("-------------------------------------------------");
+        System.out.println();
+        System.out.println("Vorname, Nachname, Login Id : Email, Passwort");
+        System.out.println("=============================================");
         for (Employee employee : hashEmployeeRegistrationId.keySet()) {
             Login login = hashEmployeeRegistrationId.get(employee);
             System.out.println(employee.getSalutation() + " " + employee.getLastname() +
-                    ", " + employee.getFirstname() + ": email (" +
-                    login.getEmail() + "), password(" + login.getPassword() + ")");
+                    ", " + employee.getFirstname() + ", " + login.getId() + " : Email (" +
+                    login.getEmail() + "), Passwort(" + login.getPassword() + ")");
         }
+        System.out.println();
+        System.out.println();
     }
 
     public static HashMap<Employee, List<TimeSheet>> employeeTimeSheetHashMap(Employee employee, int timeSheetId, String[] days, double[] hours) {
@@ -78,16 +97,12 @@ public class Previous {
 
         List<Employee> employeeList = createListOfEmployees(employee1, employee2, employee3, employee4);
 
-        HashMap<Employee, Login> hashRegistrationIdOfEmployees1 =
-                createLoginMapOfEmployees(23 ,new Employee[]{employee1, employee2},
-                        new String[]{"63656725", "8656749"});
+        HashMap<Employee, Login> hashRegistrationIdOfEmployees1 = createLoginMapOfEmployees(2307 ,new Employee[]{employee1, employee2}, new String[]{"63656725", "8656749"});
 
-        HashMap<Employee, Login> hashRegistrationIdOfEmployees2 =
-                createLoginMapOfEmployees(30 ,new Employee[]{employee3, employee4},
-                        new String[]{"858358", "9476037"});
+        HashMap<Employee, Login> hashRegistrationIdOfEmployees2 = createLoginMapOfEmployees(3007 ,new Employee[]{employee3, employee4}, new String[]{"858358", "9476037"});
 
-        filter(employeeList);
         show(hashList);
+        filter(employeeList);
         showRegistrationData(hashRegistrationIdOfEmployees1);
         showRegistrationData(hashRegistrationIdOfEmployees2);
     }

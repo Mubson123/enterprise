@@ -3,12 +3,12 @@ package com.cedricmube.enterprise.model;
 public class Child {
 
     private int id;
-    private int parent_id;
+    private int parentId;
     private String name;
 
-    public Child(int id, int parent_id, String name){
+    public Child(int id, int parentId, String name){
         this.id = id;
-        this.parent_id = parent_id;
+        this.parentId = parentId;
         this.name = name;
     }
 

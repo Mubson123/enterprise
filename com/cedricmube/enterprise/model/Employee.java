@@ -12,13 +12,13 @@ public class Employee {
     private int birthMonth;
     private int birthDay;
     private String salutation;
-    private int groupeId;
+    private int groupId;
     private int id;
 
 
 // constructor of the class--------------------------------------------------------------------------------
     public Employee(int id, String salutation, String firstname, String lastname,int birthYear,
-                    int birthMonth, int birthDay, int groupeId){
+                    int birthMonth, int birthDay, int groupId){
         this.id = id;
         this.salutation = salutation;
         this.firstname = firstname;
@@ -26,7 +26,7 @@ public class Employee {
         this.birthYear = birthYear;
         this.birthMonth = birthMonth;
         this.birthDay = birthDay;
-        this.groupeId = groupeId;
+        this.groupId = groupId;
     }
 
     public int getAge() {

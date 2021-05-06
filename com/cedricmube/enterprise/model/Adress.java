@@ -29,6 +29,6 @@ public class Adress {
     }
 
     public String getStreet() {
-        return street;
+        return this.street;
     }
 }
