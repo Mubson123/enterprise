@@ -1,8 +1,10 @@
 package com.cedricmube.enterprise.utils;
 
 import com.cedricmube.enterprise.model.Login;
+
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class LoginGenerator {
 

@@ -1,6 +1,6 @@
 package com.cedricmube.enterprise.model;
 
-public class Adress {
+public class Address {
 
     private int id;
     private String country;
@@ -8,7 +8,7 @@ public class Adress {
     private String street;
     private int employeeId;
 
-    public Adress(int id, String country, String city, String street, int employeeId) {
+    public Address(int id, String country, String city, String street, int employeeId) {
         this.id = id;
         this.country = country;
         this.city = city;
@@ -30,5 +30,9 @@ public class Adress {
 
     public String getStreet() {
         return this.street;
+    }
+
+    public  int getEmployeeId() {
+        return  this.employeeId;
     }
 }

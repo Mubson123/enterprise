@@ -90,7 +90,7 @@ public class Display {
         System.out.println("firstname, lastname, country, city, street");
         System.out.println("-------------------------------------------");
         List<Employee> employeeList = EmployeeGenerator.generateEmployee();
-        List<Adress> adressList = AdressGenerator.generateAdress();
+        List<Address> adressList = AdressGenerator.generateAdress();
         for (int i = 0; i < employeeList.size(); i ++) {
             System.out.println(employeeList.get(i).getFirstname() + ",   " + employeeList.get(i).getLastname() + ":   " + adressList.get(i).getCountry()
             +",  " + adressList.get(i).getCity() + ", " + adressList.get(i).getStreet());

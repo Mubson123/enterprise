@@ -25,4 +25,8 @@ public class Login {
     public String getEmail() {
         return this.email;
     }
+
+    public int getEmployeeId() {
+        return this.employeeId;
+    }
 }

@@ -2,6 +2,7 @@ package com.cedricmube.enterprise.utils;
 
 import com.cedricmube.enterprise.model.Group;
 import com.cedricmube.enterprise.model.Role;
+
 import java.util.*;
 
 public class GroupeGenerator {

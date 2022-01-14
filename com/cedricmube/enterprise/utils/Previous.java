@@ -1,8 +1,6 @@
 package com.cedricmube.enterprise.utils;
 
-import com.cedricmube.enterprise.model.Employee;
-import com.cedricmube.enterprise.model.Login;
-import com.cedricmube.enterprise.model.TimeSheet;
+import com.cedricmube.enterprise.model.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
