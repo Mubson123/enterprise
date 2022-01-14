@@ -20,4 +20,7 @@ public class Group {
         return this.name;
     }
 
+    public int getRoleId() {
+        return  roleId;
+    }
 }

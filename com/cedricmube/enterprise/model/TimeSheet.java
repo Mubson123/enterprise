@@ -26,4 +26,7 @@ public TimeSheet(int id, String days, double hours, int employeeId){
         return id;
     }
 
+    public int getEmployeeId() {
+        return this.employeeId;
+    }
 }

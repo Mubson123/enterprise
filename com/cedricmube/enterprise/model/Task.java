@@ -20,4 +20,7 @@ public class Task {
         return this.name;
     }
 
+    public  int getEmployeeId () {
+        return  employee_id;
+    }
 }
